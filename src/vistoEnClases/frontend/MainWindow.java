@@ -16,6 +16,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JTextField nombreJugador;
     private JButton addJugador;
     private JLabel numeroJugadores;
+    private JLabel textoFijo;
     private Tablero eltablero;
 
     public MainWindow(Tablero tablero) {
