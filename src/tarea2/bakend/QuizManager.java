@@ -1,4 +1,8 @@
 package tarea2.bakend;
+import com.google.gson.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,4 +91,51 @@ public class QuizManager {
         }
         return new ResultadosRevision(correctasPorNivel,totalesPorNivel,correctasSeleccionMultiple,totalSeleccionMultiple,correctasVerdaderoFalso,totalVerdaderoFalso);
     }
+
+    // TODO: fileName "src/data/preguntas.json" puede arrojar error al correr el programa una vez compilado.
+    public List<Pregunta> leerPreguntasJson() throws FileNotFoundException {
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+
+        JsonArray jsonArray = parser.parse(new FileReader("src/data/preguntas.json")).getAsJsonArray();
+        List<Pregunta> preguntas = new ArrayList<>();
+
+        for (JsonElement jsonElement : jsonArray) {
+            JsonObject jsonObject = jsonElement.getAsJsonObject();
+            String type = jsonObject.get("type").getAsString();
+            String enunciado = jsonObject.get("enunciado").getAsString();
+            BloomLevel bloomLevel = gson.fromJson(jsonObject.get("bloomLevel"), BloomLevel.class);
+            int tiempoEstimado = jsonObject.get("tiempoEstimado").getAsInt();
+
+            if (type.equals("SeleccionMultiple")) {
+                JsonArray opcionesArray = jsonObject.get("opciones").getAsJsonArray();
+                List<String> opciones = new ArrayList<>();
+                for (JsonElement opcion : opcionesArray) {
+                    opciones.add(opcion.getAsString());
+                }
+                int indicesRespuestaCorrecta = jsonObject.get("indiceRespuestaCorrecta").getAsInt();
+                SeleccionMultiple sm = new SeleccionMultiple(enunciado, bloomLevel, tiempoEstimado, opciones, indicesRespuestaCorrecta);
+                preguntas.add(sm);
+            } else if (type.equals("VerdaderoFalso")) {
+                boolean respuestaCorrecta = jsonObject.get("respuestaCorrecta").getAsBoolean();
+                String justificacion = jsonObject.get("justificacion").getAsString();
+
+                VerdaderoFalso vf = new VerdaderoFalso(enunciado, bloomLevel, tiempoEstimado, respuestaCorrecta, justificacion);
+                preguntas.add(vf);
+
+            }
+        }
+        return preguntas;
+    }
+
+    public void devMostrarPreguntas(){
+        for (Pregunta p : preguntas) {
+            System.out.println("Pregunta: " + p.getEnunciado() + " " + p.getBloomLevel() + " " + p.getTiempoEstimado());
+        }
+    }
+
+
+
+
+
 }

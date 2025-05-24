@@ -1,13 +1,15 @@
+import tarea2.bakend.*;
 import tarea2.frontend.PruebaPreguntas;
-import vistoEnClases.frontend.*;
-import vistoEnClases.bakend.Tablero;
-
 import javax.swing.*;
+import com.google.gson.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-
-
+    public static void main(String[] args) throws FileNotFoundException {
 
         /*-Antiguo de los visto en clases-*/
         //Tablero tablero = new Tablero();
@@ -18,10 +20,17 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
 
+        // De prueba - para ver si funcioan cargar las preuntas desde un .json
+        QuizManager quizManager = new QuizManager();
+        quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
+        quizManager.devMostrarPreguntas();
+
         PruebaPreguntas pruebaPreguntas = new PruebaPreguntas();
         frame.setContentPane(pruebaPreguntas.getPruebaPanel());
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+
 
     }
 }

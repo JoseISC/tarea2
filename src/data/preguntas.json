@@ -1,0 +1,34 @@
+[
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Cuál es la capital de Francia?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 30,
+    "opciones": ["Madrid", "París", "Berlín", "Lisboa"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Qué planeta es conocido como el planeta rojo?",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 45,
+    "opciones": ["Venus", "Marte", "Júpiter", "Saturno"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "El agua hierve a 100°C a nivel del mar.",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 15,
+    "respuestaCorrecta": true,
+    "justificacion": "A nivel del mar, el agua hierve a 100 grados Celsius."
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "La Gran Muralla China es visible desde la Luna a simple vista.",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 20,
+    "respuestaCorrecta": false,
+    "justificacion": "Es un mito común; no es visible a simple vista desde la Luna."
+  }
+]

@@ -1,5 +1,7 @@
 package tarea2.bakend;
 
+
+
 public abstract class Pregunta {
     protected String enunciado;
     protected BloomLevel bloomLevel;
