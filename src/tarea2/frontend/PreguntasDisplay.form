@@ -11,9 +11,16 @@
         <constraints border-constraint="North"/>
         <properties>
           <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
           <text value="Enunciado pregunta"/>
         </properties>
       </component>
+      <grid id="77613" binding="opcionesPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+        <constraints border-constraint="Center"/>
+        <properties/>
+        <border type="none"/>
+        <children/>
+      </grid>
     </children>
   </grid>
 </form>

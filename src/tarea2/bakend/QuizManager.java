@@ -9,7 +9,7 @@ import java.util.List;
 public class QuizManager {
     private List<Pregunta> preguntas;
     private List<String> respuestasUsuario;
-    private int indiceActual;
+    private int indiceActual = 0;
 
     public QuizManager() {
         this.preguntas = new ArrayList<>();

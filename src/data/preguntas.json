@@ -1,10 +1,10 @@
 [
   {
     "type": "SeleccionMultiple",
-    "enunciado": "¿Cuál es la capital de Francia?",
+    "enunciado": "¿Qué conducta le prece a usted más adecuada como aproximación diagnóstica?",
     "bloomLevel": "RECORDAR",
     "tiempoEstimado": 30,
-    "opciones": ["Madrid", "París", "Berlín", "Lisboa"],
+    "opciones": ["Histeroscopia con sedación", "Realizar un microlegrado, diagnóstico definitivo", "Ecografía transvaginal", "Biopsia endometrial por aspiración en consulta"],
     "indiceRespuestaCorrecta": 1
   },
   {
@@ -13,6 +13,14 @@
     "bloomLevel": "ENTENDER",
     "tiempoEstimado": 45,
     "opciones": ["Venus", "Marte", "Júpiter", "Saturno"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Cuál es la capital de Francia?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 30,
+    "opciones": ["Madrid", "París", "Berlín", "Lisboa"],
     "indiceRespuestaCorrecta": 1
   },
   {

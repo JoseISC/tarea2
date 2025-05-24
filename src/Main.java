@@ -18,17 +18,19 @@ public class Main {
 
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(800, 400);
 
         // De prueba - para ver si funcioan cargar las preuntas desde un .json
         QuizManager quizManager = new QuizManager();
         quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
         quizManager.devMostrarPreguntas();
 
-        PruebaPreguntas pruebaPreguntas = new PruebaPreguntas();
+        PruebaPreguntas pruebaPreguntas = new PruebaPreguntas(quizManager);
         frame.setContentPane(pruebaPreguntas.getPruebaPanel());
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+        pruebaPreguntas.mostrarPregunta(quizManager.getPreguntaActual());
 
 
 
