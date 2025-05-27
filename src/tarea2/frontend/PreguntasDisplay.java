@@ -2,6 +2,7 @@ package tarea2.frontend;
 
 import tarea2.bakend.Pregunta;
 import tarea2.bakend.SeleccionMultiple;
+import tarea2.bakend.VerdaderoFalso;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -35,6 +36,9 @@ public class PreguntasDisplay {
         if (pregunta instanceof SeleccionMultiple seleccionMultiple){
             crearAlternativas(seleccionMultiple.getOpciones());
         }
+        else if (pregunta instanceof VerdaderoFalso verdaderoFalso){
+            crearVerdaderoFalso();
+        }
         opcionesPanel.revalidate();
 
     }
@@ -47,5 +51,10 @@ public class PreguntasDisplay {
             int espacio = 15;
             opcionesPanel.add(new Box.Filler(new Dimension(espacio, espacio), new Dimension(espacio, espacio), new Dimension(espacio, espacio)));
         }
+    }
+
+    public void crearVerdaderoFalso() {
+        OpcionVF opcionVF = new OpcionVF();
+        opcionesPanel.add(opcionVF.getOpcionVFPanel());
     }
 }

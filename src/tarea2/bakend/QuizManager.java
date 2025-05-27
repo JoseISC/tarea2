@@ -16,6 +16,12 @@ public class QuizManager {
         this.respuestasUsuario = new ArrayList<>();
         this.indiceActual = 0;
     }
+
+    public void iniciarPrueba(){
+        // Hacer que aparezca el GUI PruebaPreguntas...
+        // por ahora esta hard-codeado.
+    }
+
     public void cargarPreguntas(List<Pregunta> nuevasPreguntas){
         this.preguntas = nuevasPreguntas;
         this.respuestasUsuario = new ArrayList<>();
@@ -23,12 +29,14 @@ public class QuizManager {
             respuestasUsuario.add("");
         }
     }
+
     public Pregunta getPreguntaActual(){
         if(indiceActual >= 0 && indiceActual < preguntas.size()){
             return preguntas.get(indiceActual);
         }
         return null;
     }
+
     public boolean avanzar(){
         if (indiceActual < preguntas.size() -1){
             indiceActual++;
@@ -36,6 +44,11 @@ public class QuizManager {
         }
         return false;
     }
+
+    public boolean puedoAvanzar(){
+        return indiceActual < preguntas.size() - 1;
+    }
+
     public boolean retroceder(){
         if (indiceActual > 0){
             indiceActual--;
@@ -43,6 +56,11 @@ public class QuizManager {
         }
         return false;
     }
+
+    public boolean puedoRetroceder(){
+        return indiceActual > 0;
+    }
+
     public void responderActual(String respuesta){
         if (indiceActual >= 0 && indiceActual < respuestasUsuario.size()){
             respuestasUsuario.set(indiceActual, respuesta);
@@ -91,6 +109,7 @@ public class QuizManager {
         }
         return new ResultadosRevision(correctasPorNivel,totalesPorNivel,correctasSeleccionMultiple,totalSeleccionMultiple,correctasVerdaderoFalso,totalVerdaderoFalso);
     }
+
 
     // TODO: fileName "src/data/preguntas.json" puede arrojar error al correr el programa una vez compilado.
     public List<Pregunta> leerPreguntasJson() throws FileNotFoundException {
