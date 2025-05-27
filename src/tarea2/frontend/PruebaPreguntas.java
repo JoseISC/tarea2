@@ -1,7 +1,7 @@
 package tarea2.frontend;
 
-import tarea2.bakend.Pregunta;
-import tarea2.bakend.QuizManager;
+import tarea2.backend.Pregunta;
+import tarea2.backend.QuizManager;
 
 import javax.swing.*;
 import java.awt.*;

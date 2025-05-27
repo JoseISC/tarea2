@@ -1,9 +1,9 @@
 package tarea2.frontend;
 
-import tarea2.bakend.Pregunta;
-import tarea2.bakend.QuizManager;
-import tarea2.bakend.SeleccionMultiple;
-import tarea2.bakend.VerdaderoFalso;
+import tarea2.backend.Pregunta;
+import tarea2.backend.QuizManager;
+import tarea2.backend.SeleccionMultiple;
+import tarea2.backend.VerdaderoFalso;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;

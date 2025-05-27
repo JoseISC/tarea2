@@ -1,4 +1,4 @@
-package tarea2.bakend;
+package tarea2.backend;
 import com.google.gson.*;
 
 import java.io.FileNotFoundException;

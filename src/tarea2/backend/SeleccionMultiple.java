@@ -1,4 +1,4 @@
-package tarea2.bakend;
+package tarea2.backend;
 import java.util.List;
 
 public class SeleccionMultiple extends Pregunta{
