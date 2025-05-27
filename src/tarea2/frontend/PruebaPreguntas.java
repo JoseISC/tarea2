@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class PruebaPreguntas {
 
-    private PreguntasDisplay preguntasDisplay = new PreguntasDisplay();
+    private PreguntasDisplay preguntasDisplay;
     private QuizManager quizManager;
 
     private JButton siguientePreguntaButton;
@@ -21,6 +21,7 @@ public class PruebaPreguntas {
 
     public PruebaPreguntas(QuizManager quizManager) {
         this.quizManager = quizManager;
+        this.preguntasDisplay = new PreguntasDisplay(quizManager);
 
         // Deshabilitir ir hacia atras y/o adelante.
         anteriorPreguntaButton.setEnabled(false);
@@ -42,7 +43,7 @@ public class PruebaPreguntas {
                          siguientePreguntaButton.setText("Enviar respuestas");
                      }
                  }
-                 else System.out.println("Enviar preguntas!");
+                 else quizManager.devMostrarRespuestas();
 
             }
         });

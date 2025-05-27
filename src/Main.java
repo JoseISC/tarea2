@@ -23,7 +23,7 @@ public class Main {
         // De prueba - para ver si funcioan cargar las preuntas desde un .json
         QuizManager quizManager = new QuizManager();
         quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
-        quizManager.devMostrarPreguntas();
+        //quizManager.devMostrarPreguntas();
 
         PruebaPreguntas pruebaPreguntas = new PruebaPreguntas(quizManager);
         frame.setContentPane(pruebaPreguntas.getPruebaPanel());

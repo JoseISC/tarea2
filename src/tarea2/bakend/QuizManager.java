@@ -153,6 +153,12 @@ public class QuizManager {
         }
     }
 
+    public void devMostrarRespuestas(){
+        for (String respuesta : respuestasUsuario) {
+            System.out.println("Respuesta " + respuestasUsuario.indexOf(respuesta) + ": " + respuesta);
+        }
+    }
+
 
 
 
