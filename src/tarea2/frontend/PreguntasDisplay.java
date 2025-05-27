@@ -31,7 +31,7 @@ public class PreguntasDisplay {
 
         //opcionesPanel.setLayout(new BoxLayout(opcionesPanel, BoxLayout.Y_AXIS));
         opcionesPanel.setLayout(new GridLayout(0, 1));
-        opcionesPanel.setBorder(new EmptyBorder(50, 10, 10, 10));
+        opcionesPanel.setBorder(new EmptyBorder(30, 10, 10, 10));
 
         this.alternativasGUI = new ArrayList<>();
     }
@@ -106,7 +106,61 @@ public class PreguntasDisplay {
     }
 
     public void crearVerdaderoFalso() {
+
+        Alternativa verdadero = new Alternativa("V", "Verdadero", 1);
         OpcionVF opcionVF = new OpcionVF();
+
+        String respuestaActual = quizManager.getRespuestasUsuario().get(quizManager.getIndiceActual());
+        boolean respuestaActualRespondida = !respuestaActual.isEmpty();
+
+        // Coloreal la alternativa si el usuario ya la respondio.
+        if(respuestaActualRespondida){
+            if(Integer.parseInt(respuestaActual) == 1){
+                verdadero.getAlternativaBoton().setBackground(colorSeleccionado);
+                verdadero.getAlternativasPanel().setBackground(colorSeleccionado);
+            }
+            else if (Integer.parseInt(respuestaActual) == 0){
+                opcionVF.getJustificacionTextField().setEnabled(true);
+                opcionVF.getFalsoButton().setBackground(colorSeleccionado);
+                opcionVF.getJustificacionTextField().setBackground(colorSeleccionado);
+            }
+        }
+
+        opcionesPanel.add(verdadero.getAlternativasPanel());
+        //TODO: Hay que "limpiar" OpcionVF - tiene mucha basura que no se esta usando.
         opcionesPanel.add(opcionVF.getOpcionVFPanel());
+
+        verdadero.getAlternativaBoton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                opcionVF.getFalsoButton().setBackground(new JButton().getBackground());
+                opcionVF.getJustificacionTextField().setBackground(new JButton().getBackground());
+                opcionVF.getJustificacionTextField().setEnabled(false);
+
+                System.out.println("Usuario marco indice: " + verdadero.getIndiceRespuesta());
+
+                verdadero.getAlternativaBoton().setBackground(colorSeleccionado);
+                verdadero.getAlternativasPanel().setBackground(colorSeleccionado);
+
+                quizManager.responderActual(String.valueOf(verdadero.getIndiceRespuesta()));
+
+            }
+        });
+
+        opcionVF.getFalsoButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                verdadero.getAlternativaBoton().setBackground(new JButton().getBackground());
+                verdadero.getAlternativasPanel().setBackground(new JButton().getBackground());
+
+                opcionVF.getJustificacionTextField().setEnabled(true);
+                opcionVF.getFalsoButton().setBackground(colorSeleccionado);
+                opcionVF.getJustificacionTextField().setBackground(colorSeleccionado);
+
+                System.out.println("Usuario marco indice: 0");
+
+                quizManager.responderActual(String.valueOf("0"));
+            }
+        });
     }
 }

@@ -1,5 +1,7 @@
 package tarea2.frontend;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +24,9 @@ public class Alternativa {
         // Boton
         this.alternativaBoton.setText(alternativa);
         this.alternativasPanel.add(alternativaBoton);
+
+        int espacio = 10;
+        this.alternativasPanel.add(new Box.Filler(new Dimension(espacio, espacio), new Dimension(espacio, espacio), new Dimension(espacio, espacio)));
 
         // Label Alternativa
         this.opcionLabel.setText(opcion);

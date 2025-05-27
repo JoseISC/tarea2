@@ -15,7 +15,7 @@ public class VerdaderoFalso extends Pregunta{
         return Boolean.parseBoolean(respuestaUsuario) == respuestaCorrecta;
     }
 
-    public boolean isRespuestaCorrecta() {
+    public boolean getRespuestaCorrecta() {
         return respuestaCorrecta;
     }
 
