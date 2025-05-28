@@ -5,7 +5,7 @@ public class SeleccionMultiple extends Pregunta{
     private List<String> opciones;
     private int indiceRespuestaCorrecta;
 
-    public SeleccionMultiple(String enunciado, BloomLevel bloomLevel, int tiempoEstimado, List<String> opciones, int indiceRespuestaCorrecta) {
+    public SeleccionMultiple(String enunciado, BloomLevel bloomLevel, float tiempoEstimado, List<String> opciones, int indiceRespuestaCorrecta) {
         super(enunciado, bloomLevel, tiempoEstimado);
         this.opciones = opciones;
         this.indiceRespuestaCorrecta = indiceRespuestaCorrecta;

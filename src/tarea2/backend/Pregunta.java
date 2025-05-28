@@ -5,9 +5,9 @@ package tarea2.backend;
 public abstract class Pregunta {
     protected String enunciado;
     protected BloomLevel bloomLevel;
-    protected int tiempoEstimado;
+    protected float tiempoEstimado;
 
-    public Pregunta(String enunciado, BloomLevel bloomLevel, int tiempoEstimado) {
+    public Pregunta(String enunciado, BloomLevel bloomLevel, float tiempoEstimado) {
         this.enunciado = enunciado;
         this.bloomLevel = bloomLevel;
         this.tiempoEstimado = tiempoEstimado;
@@ -23,7 +23,7 @@ public abstract class Pregunta {
         return bloomLevel;
     }
 
-    public int getTiempoEstimado() {
+    public float getTiempoEstimado() {
         return tiempoEstimado;
     }
 

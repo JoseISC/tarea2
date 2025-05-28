@@ -5,7 +5,7 @@ public class VerdaderoFalso extends Pregunta{
     private boolean respuestaCorrecta;
     private String justificacion;
 
-    public VerdaderoFalso(String enunciado, BloomLevel bloomLevel, int tiempoEstimado, boolean respuestaCorrecta, String justificacion) {
+    public VerdaderoFalso(String enunciado, BloomLevel bloomLevel, float tiempoEstimado, boolean respuestaCorrecta, String justificacion) {
         super(enunciado, bloomLevel, tiempoEstimado);
         this.respuestaCorrecta = respuestaCorrecta;
         this.justificacion = justificacion;

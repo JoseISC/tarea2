@@ -12,6 +12,14 @@ public class DisplayMainMenu extends JFrame {
     private JButton btnLoadQuestions;
     private JButton btnStartQuiz;
     private JButton btnExit;
+    private JPanel informationPanel;
+    private JLabel informacionPrueba;
+    private JPanel containerPanel;
+    private String cantidadPreguntas = "N/A";
+    private String duracionEstimada = "N/A";
+
+    Color colorNullPreguntas = new Color(255, 196, 196, 165);
+    Color colorPreguntasCargadas = new Color(196, 255, 213, 165);
 
     public DisplayMainMenu() {
         quizManager = new QuizManager();
@@ -38,6 +46,7 @@ public class DisplayMainMenu extends JFrame {
 
         gbc.gridy++;
         btnStartQuiz = new JButton("Iniciar Quiz");
+        btnStartQuiz.setEnabled(false);
         btnStartQuiz.addActionListener(e -> startQuiz());
         mainPanel.add(btnStartQuiz, gbc);
 
@@ -46,35 +55,45 @@ public class DisplayMainMenu extends JFrame {
         btnExit.addActionListener(e -> dispose());
         mainPanel.add(btnExit, gbc);
 
-        add(mainPanel);
+        gbc.gridy++;
+        informationPanel = new JPanel();
+        informationPanel.setLayout(new FlowLayout());
+        informacionPrueba = new JLabel("Cantidad de preguntas: " + cantidadPreguntas + " | Duración estimada: " + duracionEstimada);
+        informationPanel.add(informacionPrueba);
+
+
+
+        informationPanel.setBackground(colorNullPreguntas);
+
+        containerPanel = new JPanel();
+        containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.Y_AXIS));
+
+
+        containerPanel.add(mainPanel, gbc);
+        containerPanel.add(informationPanel);
+
+        add(containerPanel);
     }
 
     private void loadQuestions() {
         try {
 
-            // Create the PreguntasDisplay with the quizManager
             quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
-//            PreguntasDisplay preguntasDisplay = new PreguntasDisplay(quizManager);
+            cantidadPreguntas = String.valueOf(quizManager.getPreguntas().size());
+            duracionEstimada = String.valueOf(quizManager.getDuracionEnMinutos());
+            informacionPrueba.setText("Cantidad de preguntas: " + cantidadPreguntas + " | Duración estimada: " + duracionEstimada + " minutos");
+            informationPanel.setBackground(colorPreguntasCargadas);
+            btnStartQuiz.setEnabled(true);
+            containerPanel.revalidate();
+            containerPanel.repaint();
+
+
+
             JOptionPane.showMessageDialog(this,
                     "Preguntas cargadas con éxito",
                     "Éxito!",
                     JOptionPane.INFORMATION_MESSAGE);
-//
-//            // Create a new frame to display it
-//            JFrame frame = new JFrame("Preguntas");
-//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            frame.setSize(600, 400);
-//            frame.setLocationRelativeTo(null);
-//
-//            // Add the component to the frame
-//            // Assuming getAlternativasPanel() returns the main panel
-//            frame.add(preguntasDisplay.getAlternativasPanel());
-//
-//            // Dispose the current window
-//            dispose();
-//
-//            // Make the new frame visible
-//            frame.setVisible(true);
+
         } catch (FileNotFoundException ex) {
             handleError("Error al cargar las preguntas", ex);
         }

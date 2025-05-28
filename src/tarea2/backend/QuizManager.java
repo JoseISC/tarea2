@@ -79,6 +79,14 @@ public class QuizManager {
         return preguntas;
     }
 
+    public int getDuracionEnMinutos(){
+        float duracion = 0;
+        for (Pregunta pregunta : preguntas){
+            duracion += pregunta.tiempoEstimado;
+        }
+        return Math.round(duracion / 60);
+    }
+
     public ResultadosRevision revisarRespuestas(){
         int[] correctasPorNivel = new int[BloomLevel.values().length];
         int[] totalesPorNivel = new int[BloomLevel.values().length];
@@ -124,7 +132,7 @@ public class QuizManager {
             String type = jsonObject.get("type").getAsString();
             String enunciado = jsonObject.get("enunciado").getAsString();
             BloomLevel bloomLevel = gson.fromJson(jsonObject.get("bloomLevel"), BloomLevel.class);
-            int tiempoEstimado = jsonObject.get("tiempoEstimado").getAsInt();
+            float tiempoEstimado = jsonObject.get("tiempoEstimado").getAsFloat();
 
             if (type.equals("SeleccionMultiple")) {
                 JsonArray opcionesArray = jsonObject.get("opciones").getAsJsonArray();
