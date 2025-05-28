@@ -2,6 +2,8 @@ package tarea2.frontend;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+
 import tarea2.backend.QuizManager;
 
 public class DisplayMainMenu extends JFrame {
@@ -49,25 +51,31 @@ public class DisplayMainMenu extends JFrame {
 
     private void loadQuestions() {
         try {
+
             // Create the PreguntasDisplay with the quizManager
-            PreguntasDisplay preguntasDisplay = new PreguntasDisplay(quizManager);
-
-            // Create a new frame to display it
-            JFrame frame = new JFrame("Preguntas");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(600, 400);
-            frame.setLocationRelativeTo(null);
-
-            // Add the component to the frame
-            // Assuming getAlternativasPanel() returns the main panel
-            frame.add(preguntasDisplay.getAlternativasPanel());
-
-            // Dispose the current window
-            dispose();
-
-            // Make the new frame visible
-            frame.setVisible(true);
-        } catch (Exception ex) {
+            quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
+//            PreguntasDisplay preguntasDisplay = new PreguntasDisplay(quizManager);
+            JOptionPane.showMessageDialog(this,
+                    "Preguntas cargadas con éxito",
+                    "Éxito!",
+                    JOptionPane.INFORMATION_MESSAGE);
+//
+//            // Create a new frame to display it
+//            JFrame frame = new JFrame("Preguntas");
+//            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//            frame.setSize(600, 400);
+//            frame.setLocationRelativeTo(null);
+//
+//            // Add the component to the frame
+//            // Assuming getAlternativasPanel() returns the main panel
+//            frame.add(preguntasDisplay.getAlternativasPanel());
+//
+//            // Dispose the current window
+//            dispose();
+//
+//            // Make the new frame visible
+//            frame.setVisible(true);
+        } catch (FileNotFoundException ex) {
             handleError("Error al cargar las preguntas", ex);
         }
     }
@@ -77,11 +85,15 @@ public class DisplayMainMenu extends JFrame {
         try {
             // Create the PruebaPreguntas with the existing quizManager
             PruebaPreguntas prueba = new PruebaPreguntas(quizManager);
-
+            if (quizManager.getPreguntas().isEmpty()){
+                handleError("Error al iniciar el quiz", new Exception("No hay preguntas para mostrar, asegúrese que cargó las preguntas y/o que el .json no este vacío"));
+                return;
+            }
+           //quizManager.iniciarPrueba();
             // Create a new frame to display the quiz
             JFrame frame = new JFrame("Quiz");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(600, 400);
+            frame.setSize(800, 400);
             frame.setLocationRelativeTo(null);
 
             // Add the component to the frame
@@ -93,10 +105,9 @@ public class DisplayMainMenu extends JFrame {
             // Make the new frame visible
             frame.setVisible(true);
 
-            // Initialize the first question if available
-            if (!quizManager.getPreguntas().isEmpty()) {
-                prueba.mostrarPregunta(quizManager.getPreguntaActual());
-            }
+            // Initialize the first question
+            prueba.mostrarPregunta(quizManager.getPreguntaActual());
+
         } catch (Exception ex) {
             handleError("Error al iniciar el quiz", ex);
         }
