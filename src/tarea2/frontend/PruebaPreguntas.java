@@ -42,7 +42,11 @@ public class PruebaPreguntas {
                          siguientePreguntaButton.setText("Enviar respuestas");
                      }
                  }
-                 else quizManager.devMostrarRespuestas();
+                 else{
+                     mostrarResultados();
+                     quizManager.devMostrarRespuestas();
+                 }
+
 
             }
         });
@@ -98,6 +102,31 @@ public class PruebaPreguntas {
     public void evaluarRetrocederOAvanzar(){
         //siguientePreguntaButton.setEnabled(quizManager.puedoAvanzar());
         anteriorPreguntaButton.setEnabled(quizManager.puedoRetroceder());
+    }
+
+    public void mostrarResultados(){
+        Resultados resultadosPantalla = new Resultados(quizManager);
+
+        //quizManager.iniciarPrueba();
+        // Create a new frame to display the quiz
+        JFrame frame = new JFrame("Resultados");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 400);
+        frame.setLocationRelativeTo(null);
+
+        // Add the component to the frame
+        frame.add(resultadosPantalla.getMainResultadosPanel());
+
+        Component top = this.getPruebaPanel().getTopLevelAncestor();
+        if (top instanceof JFrame) {
+            ((JFrame) top).dispose();
+        }
+
+        // Make the new frame visible
+        frame.setVisible(true);
+
+        // Initialize the first question
+        //prueba.mostrarPregunta(quizManager.getPreguntaActual());
     }
 
 }

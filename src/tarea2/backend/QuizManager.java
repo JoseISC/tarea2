@@ -79,6 +79,58 @@ public class QuizManager {
         return preguntas;
     }
 
+    public List<Pregunta> getPreguntasSeleccionMultiple(){
+        List<Pregunta> preguntasSM = new ArrayList<>();
+        for (Pregunta pregunta : this.preguntas){
+            if (pregunta instanceof SeleccionMultiple){
+                preguntasSM.add(pregunta);
+            }
+        }
+        return preguntasSM;
+    }
+
+    public List<Pregunta> getPreguntasVerdaderoFalso(){
+        List<Pregunta> preguntasVF = new ArrayList<>();
+        for (Pregunta pregunta : this.preguntas){
+            if (pregunta instanceof VerdaderoFalso){
+                preguntasVF.add(pregunta);
+            }
+        }
+        return preguntasVF;
+    }
+
+    public List<String> getSMRespuestas(){
+        List<String> respuestas = new ArrayList<>();
+        for (Pregunta pregunta : this.preguntas){
+            if (pregunta instanceof SeleccionMultiple){
+                respuestas.add(this.respuestasUsuario.get(this.preguntas.indexOf(pregunta)));
+            }
+        }
+        return respuestas;
+    }
+
+    public List<String> getVFRespuestas(){
+        List<String> respuestas = new ArrayList<>();
+        for (Pregunta pregunta : this.preguntas){
+            if (pregunta instanceof VerdaderoFalso){
+                respuestas.add(this.respuestasUsuario.get(this.preguntas.indexOf(pregunta)));
+            }
+        }
+        return respuestas;
+    }
+
+
+    public int getPorcentajePregunta(List<Pregunta> preguntas, List<String> respuestas){
+        int correctas = 0;
+        for (Pregunta pregunta : preguntas){
+            if (pregunta.esRespuestaCorrecta(respuestas.get(this.preguntas.indexOf(pregunta)))){
+                correctas++;
+            }
+        }
+        return correctas;
+    }
+
+
     public int getDuracionEnMinutos(){
         float duracion = 0;
         for (Pregunta pregunta : preguntas){
