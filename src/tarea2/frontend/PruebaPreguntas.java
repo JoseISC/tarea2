@@ -115,7 +115,7 @@ public class PruebaPreguntas {
         frame.setLocationRelativeTo(null);
 
         // Add the component to the frame
-        frame.add(resultadosPantalla.getMainResultadosPanel());
+        frame.add(resultadosPantalla.getResultadosPanel());
 
         Component top = this.getPruebaPanel().getTopLevelAncestor();
         if (top instanceof JFrame) {
