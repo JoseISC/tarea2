@@ -3,8 +3,10 @@ package tarea2.frontend;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import tarea2.backend.QuizManager;
+import tarea2.backend.Pregunta;
 
 public class DisplayMainMenu extends JFrame {
     private QuizManager quizManager;
@@ -28,6 +30,7 @@ public class DisplayMainMenu extends JFrame {
         setSize(400, 200);
         setLocationRelativeTo(null);
         initComponents();
+        btnStartQuiz.setEnabled(false);
         setVisible(true);
     }
 
@@ -61,13 +64,10 @@ public class DisplayMainMenu extends JFrame {
         informacionPrueba = new JLabel("Cantidad de preguntas: " + cantidadPreguntas + " | Duración estimada: " + duracionEstimada);
         informationPanel.add(informacionPrueba);
 
-
-
         informationPanel.setBackground(colorNullPreguntas);
 
         containerPanel = new JPanel();
         containerPanel.setLayout(new BoxLayout(containerPanel, BoxLayout.Y_AXIS));
-
 
         containerPanel.add(mainPanel, gbc);
         containerPanel.add(informationPanel);
@@ -77,61 +77,86 @@ public class DisplayMainMenu extends JFrame {
 
     private void loadQuestions() {
         try {
+            // Deshabilitar el botón mientras se cargan las preguntas
+            btnLoadQuestions.setEnabled(false);
+            btnLoadQuestions.setText("Cargando...");
 
-            quizManager.cargarPreguntas(quizManager.leerPreguntasJson());
+            // Cargar las preguntas
+            List<Pregunta> preguntasCargadas = quizManager.leerPreguntasJson();
+            if (preguntasCargadas.isEmpty()) {
+                throw new Exception("El archivo de preguntas está vacío");
+            }
+            quizManager.cargarPreguntas(preguntasCargadas);
+            
+            // Actualizar la información
             cantidadPreguntas = String.valueOf(quizManager.getPreguntas().size());
             duracionEstimada = String.valueOf(quizManager.getDuracionEnMinutos());
             informacionPrueba.setText("Cantidad de preguntas: " + cantidadPreguntas + " | Duración estimada: " + duracionEstimada + " minutos");
             informationPanel.setBackground(colorPreguntasCargadas);
             btnStartQuiz.setEnabled(true);
+            
+            // Actualizar la interfaz
             containerPanel.revalidate();
             containerPanel.repaint();
 
-
-
+            // Mostrar mensaje de éxito
             JOptionPane.showMessageDialog(this,
+                    "Se cargaron " + cantidadPreguntas + " preguntas.\nDuración estimada: " + duracionEstimada + " minutos",
                     "Preguntas cargadas con éxito",
-                    "Éxito!",
                     JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (FileNotFoundException ex) {
+        } catch (Exception ex) {
             handleError("Error al cargar las preguntas", ex);
+            // Restaurar el estado del botón en caso de error
+            btnLoadQuestions.setEnabled(true);
+            btnLoadQuestions.setText("Cargar Preguntas");
+            // Asegurarse de que el botón de iniciar quiz esté deshabilitado
+            btnStartQuiz.setEnabled(false);
+            // Restaurar el color del panel de información
+            informationPanel.setBackground(colorNullPreguntas);
+            informacionPrueba.setText("Cantidad de preguntas: N/A | Duración estimada: N/A");
         }
     }
 
-
     private void startQuiz() {
         try {
-            // Create the PruebaPreguntas with the existing quizManager
-            PruebaPreguntas prueba = new PruebaPreguntas(quizManager);
-            if (quizManager.getPreguntas().isEmpty()){
-                handleError("Error al iniciar el quiz", new Exception("No hay preguntas para mostrar, asegúrese que cargó las preguntas y/o que el .json no este vacío"));
+            // Validar que hay preguntas cargadas
+            if (quizManager.getPreguntas().isEmpty()) {
+                handleError("Error al iniciar el quiz", 
+                    new Exception("No hay preguntas para mostrar. Por favor, cargue las preguntas primero."));
                 return;
             }
-           //quizManager.iniciarPrueba();
-            // Create a new frame to display the quiz
+
+            // Deshabilitar botones durante la transición
+            btnStartQuiz.setEnabled(false);
+            btnLoadQuestions.setEnabled(false);
+
+            // Crear la ventana del quiz
             JFrame frame = new JFrame("Quiz");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(800, 400);
             frame.setLocationRelativeTo(null);
 
-            // Add the component to the frame
+            // Crear e inicializar el panel de preguntas
+            PruebaPreguntas prueba = new PruebaPreguntas(quizManager);
             frame.add(prueba.getPruebaPanel());
 
-            // Dispose the current window
+            // Cerrar la ventana actual
             dispose();
 
-            // Make the new frame visible
+            // Mostrar la nueva ventana
             frame.setVisible(true);
 
-            // Initialize the first question
+            // Mostrar la primera pregunta
             prueba.mostrarPregunta(quizManager.getPreguntaActual());
 
         } catch (Exception ex) {
             handleError("Error al iniciar el quiz", ex);
+            // Restaurar el estado de los botones en caso de error
+            btnStartQuiz.setEnabled(true);
+            btnLoadQuestions.setEnabled(true);
         }
     }
-
 
     private void handleError(String message, Exception ex) {
         ex.printStackTrace();

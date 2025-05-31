@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class PruebaPreguntas {
 
@@ -33,21 +34,41 @@ public class PruebaPreguntas {
         this.siguientePreguntaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-
-                 if(quizManager.avanzar()){
-                     mostrarPregunta(quizManager.getPreguntaActual());
-                     evaluarRetrocederOAvanzar();
-                     if(!quizManager.puedoAvanzar()){
-                         siguientePreguntaButton.setText("Enviar respuestas");
-                     }
-                 }
-                 else{
-                     mostrarResultados();
-                     quizManager.devMostrarRespuestas();
-                 }
-
-
+                if(quizManager.avanzar()){
+                    mostrarPregunta(quizManager.getPreguntaActual());
+                    evaluarRetrocederOAvanzar();
+                    if(!quizManager.puedoAvanzar()){
+                        siguientePreguntaButton.setText("Enviar respuestas");
+                    }
+                }
+                else{
+                    // Validar que todas las preguntas estén respondidas antes de finalizar
+                    if (!quizManager.todasLasPreguntasRespondidas()) {
+                        List<Integer> sinResponder = quizManager.getPreguntasSinResponder();
+                        int cantidadSinResponder = sinResponder.size();
+                        int cantidadRespondidas = quizManager.getCantidadPreguntasRespondidas();
+                        
+                        String mensaje = "Tienes " + cantidadSinResponder + " pregunta(s) sin responder:\n";
+                        mensaje += "Preguntas sin responder: " + sinResponder.toString() + "\n";
+                        mensaje += "Progreso: " + cantidadRespondidas + "/" + quizManager.getPreguntas().size() + "\n\n";
+                        mensaje += "¿Deseas finalizar el quiz de todas formas?";
+                        
+                        int opcion = JOptionPane.showConfirmDialog(
+                            siguientePreguntaButton.getParent(),
+                            mensaje,
+                            "Preguntas sin responder",
+                            JOptionPane.YES_NO_OPTION,
+                            JOptionPane.WARNING_MESSAGE
+                        );
+                        
+                        if (opcion != JOptionPane.YES_OPTION) {
+                            return; // No finalizar el quiz
+                        }
+                    }
+                    
+                    mostrarResultados();
+                    quizManager.devMostrarRespuestas();
+                }
             }
         });
 
@@ -89,11 +110,16 @@ public class PruebaPreguntas {
         preguntasContainerPanel.removeAll();
 
         String numeroPreguntaString = String.valueOf(quizManager.getIndiceActual() + 1);
-        numPregunta.setText(numeroPreguntaString + "/" + quizManager.getPreguntas().size());
+        int preguntasRespondidas = quizManager.getCantidadPreguntasRespondidas();
+        int totalPreguntas = quizManager.getPreguntas().size();
+        
+        // Formato: "3/5 (4 respondidas)"
+        String textoProgreso = numeroPreguntaString + "/" + totalPreguntas + 
+                              " (" + preguntasRespondidas + " respondidas)";
+        numPregunta.setText(textoProgreso);
 
         preguntasContainerPanel.add(preguntasDisplay.getAlternativasPanel(), BorderLayout.CENTER);
         preguntasDisplay.setPreguntasData(pregunta);
-
 
         preguntasContainerPanel.revalidate();
         preguntasContainerPanel.repaint();

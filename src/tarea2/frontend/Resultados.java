@@ -76,23 +76,58 @@ public class Resultados {
         ResultadosRevision resumen = quizManager.revisarRespuestas();
         BloomLevel[] niveles = BloomLevel.values();
 
+        // Agregar información general
+        int totalPreguntas = quizManager.getPreguntas().size();
+        int preguntasRespondidas = quizManager.getCantidadPreguntasRespondidas();
+        int totalCorrectas = resumen.correctasSeleccionMultiple + resumen.correctasVerdaderoFalso;
+        double porcentajeGeneral = totalPreguntas > 0 ? (100.0 * totalCorrectas / totalPreguntas) : 0;
+        
+        JLabel resumenGeneral = new JLabel("RESUMEN GENERAL:");
+        resumenGeneral.setFont(resumenGeneral.getFont().deriveFont(Font.BOLD));
+        resumenPanel.add(resumenGeneral);
+        
+        resumenPanel.add(new JLabel("Total de preguntas: " + totalPreguntas));
+        resumenPanel.add(new JLabel("Preguntas respondidas: " + preguntasRespondidas));
+        resumenPanel.add(new JLabel("Respuestas correctas: " + totalCorrectas + "/" + totalPreguntas + 
+                                   " (" + String.format("%.1f", porcentajeGeneral) + "%)"));
+        
+        // Separador
+        resumenPanel.add(new JLabel(" "));
+        JLabel resumenPorTipo = new JLabel("POR TIPO DE PREGUNTA:");
+        resumenPorTipo.setFont(resumenPorTipo.getFont().deriveFont(Font.BOLD));
+        resumenPanel.add(resumenPorTipo);
+
+        // Calcular porcentajes para tipos de pregunta
+        double pctSM = resumen.totalSeleccionMultiple > 0 ? 
+            (100.0 * resumen.correctasSeleccionMultiple / resumen.totalSeleccionMultiple) : 0;
+        double pctVF = resumen.totalVerdaderoFalso > 0 ? 
+            (100.0 * resumen.correctasVerdaderoFalso / resumen.totalVerdaderoFalso) : 0;
+            
+        resumenQCMLabel = new JLabel("Selección Múltiple: " + resumen.correctasSeleccionMultiple + "/" + 
+                                    resumen.totalSeleccionMultiple + " (" + String.format("%.1f", pctSM) + "%)");
+        resumenVFLabel = new JLabel("Verdadero/Falso: " + resumen.correctasVerdaderoFalso + "/" + 
+                                   resumen.totalVerdaderoFalso + " (" + String.format("%.1f", pctVF) + "%)");
+
+        resumenPanel.add(resumenQCMLabel);
+        resumenPanel.add(resumenVFLabel);
+        
+        // Separador
+        resumenPanel.add(new JLabel(" "));
+        JLabel resumenPorNivel = new JLabel("POR NIVEL DE BLOOM:");
+        resumenPorNivel.setFont(resumenPorNivel.getFont().deriveFont(Font.BOLD));
+        resumenPanel.add(resumenPorNivel);
+
         for (int i = 0; i < niveles.length; i++) {
             int total = resumen.totalesPorNivel[i];
             if (total > 0) {
                 int correctas = resumen.correctasPorNivel[i];
                 double pct = 100.0 * correctas / total;
-                JLabel labelNivel = new JLabel(niveles[i] + " : " + correctas + "/" + total +
+                JLabel labelNivel = new JLabel(niveles[i] + ": " + correctas + "/" + total +
                         " (" + String.format("%.1f", pct) + "%)");
                 resumenPorNivelLabels.add(labelNivel);
                 resumenPanel.add(labelNivel);
             }
         }
-
-        resumenQCMLabel = new JLabel("Seleccion Multiple: " + resumen.correctasSeleccionMultiple + "/" + resumen.totalSeleccionMultiple);
-        resumenVFLabel = new JLabel("Verdadero/Falso: " + resumen.correctasVerdaderoFalso + "/" + resumen.totalVerdaderoFalso);
-
-        resumenPanel.add(resumenQCMLabel);
-        resumenPanel.add(resumenVFLabel);
 
         btnRetourMenu = new JButton("Volver al menú principal");
         btnRetourMenu.addActionListener(e -> {
@@ -100,6 +135,13 @@ public class Resultados {
             topFrame.dispose();
             DisplayMainMenu.showMenu();
         });
+        
+        JButton btnRevisarRespuestas = new JButton("Revisar respuestas");
+        btnRevisarRespuestas.addActionListener(e -> {
+            mostrarRevisionIndividual();
+        });
+        
+        resumenPanel.add(btnRevisarRespuestas);
         resumenPanel.add(btnRetourMenu);
 
         resultadosPanel.add(resumenPanel, BorderLayout.SOUTH);
@@ -121,5 +163,24 @@ public class Resultados {
 
     public JPanel getResultadosPanel() {
         return resultadosPanel;
+    }
+    
+    private void mostrarRevisionIndividual() {
+        // Crear nueva ventana para revisión individual
+        RevisionIndividual revision = new RevisionIndividual(quizManager);
+        
+        JFrame frame = new JFrame("Revisión de respuestas");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(900, 600);
+        frame.setLocationRelativeTo(null);
+        
+        frame.add(revision.getRevisionPanel());
+        
+        // Cerrar la ventana actual
+        JFrame frameActual = (JFrame) SwingUtilities.getWindowAncestor(resultadosPanel);
+        frameActual.dispose();
+        
+        // Mostrar la nueva ventana
+        frame.setVisible(true);
     }
 }
