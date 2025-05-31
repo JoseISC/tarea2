@@ -1,0 +1,162 @@
+[
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Cuál es la capital de Australia?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 30,
+    "opciones": ["Sydney", "Melbourne", "Canberra", "Perth"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "El monte Everest es la montaña más alta del mundo.",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 20,
+    "respuestaCorrecta": true,
+    "justificacion": "El monte Everest mide 8,848 metros y es efectivamente la montaña más alta."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Qué elemento químico tiene el símbolo Au?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 25,
+    "opciones": ["Plata", "Oro", "Aluminio", "Argón"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "La fotosíntesis es el proceso por el cual las plantas convierten luz solar en energía química.",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 40,
+    "respuestaCorrecta": true,
+    "justificacion": "La fotosíntesis permite a las plantas convertir energía lumínica en glucosa y oxígeno."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Por qué los objetos caen hacia el suelo en la Tierra?",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 45,
+    "opciones": ["Por el magnetismo", "Por la gravedad", "Por la presión atmosférica", "Por la rotación terrestre"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "El efecto invernadero es completamente perjudicial para la vida en la Tierra.",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 50,
+    "respuestaCorrecta": false,
+    "justificacion": "El efecto invernadero natural es necesario para mantener temperaturas habitables; el problema es su intensificación."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Si viajas de Londres a Nueva York, ¿cómo ajustarías tu horario para evitar jet lag?",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 60,
+    "opciones": ["Mantener horario de Londres", "Ajustarse inmediatamente al horario local", "Cambiar gradualmente días antes", "Dormir todo el vuelo"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Para mantener una dieta equilibrada, se debe aplicar la regla de consumir 5 porciones de frutas y verduras al día.",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 45,
+    "respuestaCorrecta": true,
+    "justificacion": "Esta recomendación de la OMS ayuda a asegurar la ingesta adecuada de vitaminas y minerales."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Analiza esta situación: Un país tiene alta inflación y alto desempleo. ¿Qué fenómeno económico describe esto?",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 75,
+    "opciones": ["Deflación", "Estanflación", "Recesión simple", "Crecimiento económico"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "El cambio climático actual se debe principalmente a causas naturales como los ciclos solares.",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 80,
+    "respuestaCorrecta": false,
+    "justificacion": "La evidencia científica indica que el cambio climático actual es principalmente causado por actividades humanas."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Evalúa las fuentes de energía: ¿Cuál es más sostenible a largo plazo para un país tropical?",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 90,
+    "opciones": ["Carbón", "Energía solar", "Gas natural", "Energía nuclear"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Las redes sociales tienen un impacto completamente negativo en la salud mental de los adolescentes.",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 85,
+    "respuestaCorrecta": false,
+    "justificacion": "Aunque pueden tener efectos negativos, también ofrecen beneficios como conexión social y acceso a información."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Diseña una estrategia para reducir la contaminación plástica en los océanos. ¿Qué enfoque sería más efectivo?",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 120,
+    "opciones": ["Solo limpieza oceánica", "Solo reducción en origen", "Enfoque integral: reducción + limpieza + educación", "Solo regulaciones gubernamentales"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Para crear una sociedad más igualitaria, es suficiente con implementar solo políticas económicas redistributivas.",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 100,
+    "respuestaCorrecta": false,
+    "justificacion": "Se requiere un enfoque multidimensional que incluya educación, cultura, políticas sociales y económicas."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿En qué año comenzó la Segunda Guerra Mundial?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 25,
+    "opciones": ["1938", "1939", "1940", "1941"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "La teoría de la evolución de Darwin explica que los organismos evolucionan para sobrevivir mejor en su ambiente.",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 55,
+    "respuestaCorrecta": true,
+    "justificacion": "La selección natural favorece a los organismos mejor adaptados a su entorno."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Para calcular el área de un círculo con radio 5 metros, ¿qué fórmula aplicarías?",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 40,
+    "opciones": ["2πr", "πr²", "πd", "r²"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "En un ecosistema, la eliminación de un depredador tope siempre beneficia a todas las demás especies.",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 70,
+    "respuestaCorrecta": false,
+    "justificacion": "La eliminación de depredadores tope puede causar sobrepoblación de presas y desequilibrio ecosistémico."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Evalúa los métodos de comunicación: ¿Cuál es más efectivo para transmitir información compleja?",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 65,
+    "opciones": ["Solo texto", "Solo imágenes", "Combinación texto + visuales + ejemplos", "Solo audio"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Una ciudad inteligente debe priorizar únicamente la tecnología sobre los aspectos sociales y ambientales.",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 95,
+    "respuestaCorrecta": false,
+    "justificacion": "Una ciudad verdaderamente inteligente debe equilibrar tecnología, sostenibilidad, calidad de vida y participación ciudadana."
+  }
+] 

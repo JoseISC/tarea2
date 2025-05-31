@@ -1,0 +1,162 @@
+[
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Qué significa la sigla CPU?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 30,
+    "opciones": ["Central Processing Unit", "Computer Personal Unit", "Central Program Unit", "Central Power Unit"],
+    "indiceRespuestaCorrecta": 0
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "El protocolo HTTP opera por defecto en el puerto 80.",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 25,
+    "respuestaCorrecta": true,
+    "justificacion": "HTTP utiliza el puerto 80 como puerto estándar para comunicaciones web."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Cuál es la diferencia principal entre RAM y ROM?",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 45,
+    "opciones": ["RAM es volátil, ROM es no volátil", "RAM es más lenta que ROM", "ROM almacena más datos que RAM", "No hay diferencia"],
+    "indiceRespuestaCorrecta": 0
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "En programación orientada a objetos, la herencia permite que una clase herede propiedades y métodos de otra clase.",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 35,
+    "respuestaCorrecta": true,
+    "justificacion": "La herencia es un principio fundamental de POO que permite la reutilización de código."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Si necesitas ordenar un array de 1000 elementos y el tiempo es crítico, ¿qué algoritmo elegirías?",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 60,
+    "opciones": ["Bubble Sort", "Quick Sort", "Selection Sort", "Insertion Sort"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "En una base de datos relacional, aplicar normalización siempre mejora el rendimiento de las consultas.",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 50,
+    "respuestaCorrecta": false,
+    "justificacion": "La normalización puede reducir el rendimiento en consultas complejas que requieren múltiples JOINs."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Analiza este código: for(int i=0; i<n; i++) { for(int j=0; j<n; j++) { print(i,j); } }. ¿Cuál es su complejidad temporal?",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 75,
+    "opciones": ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "En un sistema distribuido, el teorema CAP establece que es imposible garantizar simultáneamente Consistencia, Disponibilidad y Tolerancia a particiones.",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 60,
+    "respuestaCorrecta": true,
+    "justificacion": "El teorema CAP demuestra que solo se pueden garantizar dos de las tres propiedades simultáneamente."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Cuál de estos patrones de diseño es más apropiado para garantizar que una clase tenga una sola instancia?",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 55,
+    "opciones": ["Factory", "Observer", "Singleton", "Strategy"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Para un sistema de comercio electrónico con miles de usuarios concurrentes, usar una base de datos NoSQL siempre es mejor que una base de datos SQL.",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 90,
+    "respuestaCorrecta": false,
+    "justificacion": "La elección depende de los requisitos específicos: consistencia de datos, complejidad de consultas, etc."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Diseñas una aplicación móvil que debe funcionar offline. ¿Qué estrategia implementarías?",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 120,
+    "opciones": ["Solo caché en memoria", "Base de datos local con sincronización", "Requiere conexión siempre", "Almacenamiento en la nube únicamente"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Al crear una API REST, es recomendable usar verbos HTTP como GET para operaciones de solo lectura.",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 45,
+    "respuestaCorrecta": true,
+    "justificacion": "GET es idempotente y semánticamente correcto para operaciones de solo lectura en REST."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Qué es un deadlock en sistemas operativos?",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 40,
+    "opciones": ["Un proceso que consume mucha CPU", "Cuando dos procesos se bloquean mutuamente", "Un error de sintaxis", "Un virus informático"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "JavaScript es un lenguaje compilado.",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 20,
+    "respuestaCorrecta": false,
+    "justificacion": "JavaScript es un lenguaje interpretado, aunque moderne engines usan JIT compilation."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "¿Por qué los arrays en programación suelen indexarse desde 0?",
+    "bloomLevel": "ENTENDER",
+    "tiempoEstimado": 50,
+    "opciones": ["Es una convención arbitraria", "Facilita el cálculo de direcciones de memoria", "Los programadores prefieren el 0", "Es más fácil de escribir"],
+    "indiceRespuestaCorrecta": 1
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Necesitas implementar un sistema de cache. ¿Qué estructura de datos usarías para acceso O(1)?",
+    "bloomLevel": "APLICAR",
+    "tiempoEstimado": 65,
+    "opciones": ["Array ordenado", "Lista enlazada", "Hash Table", "Árbol binario"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "En un algoritmo de búsqueda binaria, la complejidad es O(log n) porque elimina la mitad de elementos en cada iteración.",
+    "bloomLevel": "ANALIZAR",
+    "tiempoEstimado": 70,
+    "respuestaCorrecta": true,
+    "justificacion": "Al dividir el espacio de búsqueda por la mitad repetidamente, se obtiene complejidad logarítmica."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Evalúa: ¿Cuál es la mejor práctica para manejar contraseñas en una aplicación web?",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 80,
+    "opciones": ["Almacenar en texto plano", "Usar MD5 hash", "Usar bcrypt con salt", "Cifrar simétricamente"],
+    "indiceRespuestaCorrecta": 2
+  },
+  {
+    "type": "VerdaderoFalso",
+    "enunciado": "Para mejorar la seguridad de una aplicación web, es suficiente con validar datos solo en el frontend.",
+    "bloomLevel": "EVALUAR",
+    "tiempoEstimado": 55,
+    "respuestaCorrecta": false,
+    "justificacion": "La validación debe realizarse tanto en frontend (UX) como en backend (seguridad real)."
+  },
+  {
+    "type": "SeleccionMultiple",
+    "enunciado": "Diseñas un sistema de notificaciones en tiempo real para 1 millón de usuarios. ¿Qué tecnología implementarías?",
+    "bloomLevel": "CREAR",
+    "tiempoEstimado": 150,
+    "opciones": ["Polling cada segundo", "WebSockets con load balancer", "Email automático", "SMS masivo"],
+    "indiceRespuestaCorrecta": 1
+  }
+] 
