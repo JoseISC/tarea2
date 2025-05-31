@@ -22,6 +22,7 @@ public class OpcionVF {
         Dimension minSize = new Dimension(420, 30);
         justificacionTextField.setMaximumSize(minSize);
         justificacionTextField.setPreferredSize(minSize);
+        justificacionTextField.setEnabled(false);
 
         FalsoPanel.add(this.falsoButton);
         FalsoPanel.add(this.justificacionTextField);

@@ -174,7 +174,10 @@ public class RevisionIndividual {
     }
     
     private void mostrarRevisionVerdaderoFalso(VerdaderoFalso pregunta, String respuestaUsuario, boolean esCorrecta) {
-        boolean respuestaUsuarioBool = "1".equals(respuestaUsuario);
+        boolean respuestaUsuarioBool;
+        boolean respuestaVacia = respuestaUsuario.isEmpty();
+        respuestaUsuarioBool = "1".equals(respuestaUsuario);
+
         boolean respuestaCorrectaBool = pregunta.getRespuestaCorrecta();
         
         respuestasPanel.add(new JLabel("Opciones:"));
@@ -187,12 +190,19 @@ public class RevisionIndividual {
             verdaderoLabel.setText(verdaderoLabel.getText() + " ✓ (Correcta)");
             verdaderoLabel.setFont(verdaderoLabel.getFont().deriveFont(Font.BOLD));
         }
-        if (respuestaUsuarioBool && !esCorrecta) {
-            verdaderoLabel.setForeground(Color.RED.darker());
-            verdaderoLabel.setText(verdaderoLabel.getText() + " ✗ (Tu respuesta)");
-        } else if (respuestaUsuarioBool && esCorrecta) {
-            verdaderoLabel.setText(verdaderoLabel.getText() + " (Tu respuesta)");
+
+        if (!respuestaVacia){
+            if (respuestaUsuarioBool && !esCorrecta) {
+                verdaderoLabel.setForeground(Color.RED.darker());
+                verdaderoLabel.setText(verdaderoLabel.getText() + " ✗ (Tu respuesta)");
+            } else if (respuestaUsuarioBool && esCorrecta) {
+                verdaderoLabel.setText(verdaderoLabel.getText() + " (Tu respuesta)");
+            }
         }
+
+
+
+
         respuestasPanel.add(verdaderoLabel);
         
         // Opción Falso
@@ -202,11 +212,14 @@ public class RevisionIndividual {
             falsoLabel.setText(falsoLabel.getText() + " ✓ (Correcta)");
             falsoLabel.setFont(falsoLabel.getFont().deriveFont(Font.BOLD));
         }
-        if (!respuestaUsuarioBool && !esCorrecta) {
-            falsoLabel.setForeground(Color.RED.darker());
-            falsoLabel.setText(falsoLabel.getText() + " ✗ (Tu respuesta)");
-        } else if (!respuestaUsuarioBool && esCorrecta) {
-            falsoLabel.setText(falsoLabel.getText() + " (Tu respuesta)");
+
+        if (!respuestaVacia){
+            if (!respuestaUsuarioBool && !esCorrecta) {
+                falsoLabel.setForeground(Color.RED.darker());
+                falsoLabel.setText(falsoLabel.getText() + " ✗ (Tu respuesta)");
+            } else if (!respuestaUsuarioBool && esCorrecta) {
+                falsoLabel.setText(falsoLabel.getText() + " (Tu respuesta)");
+            }
         }
         respuestasPanel.add(falsoLabel);
         

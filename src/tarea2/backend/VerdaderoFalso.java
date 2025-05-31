@@ -12,6 +12,10 @@ public class VerdaderoFalso extends Pregunta{
     }
 
     @Override public boolean esRespuestaCorrecta(String respuestaUsuario){
+        if (respuestaUsuario.isEmpty()){
+            return false;
+        }
+
         boolean respuestaConvertida = "1".equals(respuestaUsuario);
         return respuestaConvertida == respuestaCorrecta;
     }

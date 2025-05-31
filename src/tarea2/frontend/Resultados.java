@@ -156,6 +156,10 @@ public class Resultados {
                 return "Respuesta no válida";
             }
         } else if (pregunta instanceof VerdaderoFalso) {
+            if (respuestaUsuario.isEmpty()){
+                return "Respuesta no válida";
+            }
+
             return "1".equals(respuestaUsuario) ? "Verdadero" : "Falso";
         }
         return respuestaUsuario;
