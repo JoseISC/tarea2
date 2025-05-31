@@ -4,6 +4,15 @@
 
 Sistema desarrollado en Java Swing que permite administrar la aplicación de pruebas cuyos ítemes están especificados según la taxonomía de Bloom. El sistema soporta preguntas de selección múltiple y verdadero/falso con diferentes niveles taxonómicos.
 
+## Características Principales
+
+- 🎯 Soporte para preguntas de selección múltiple y verdadero/falso
+- 📊 Evaluación basada en la Taxonomía de Bloom
+- 📝 Carga de preguntas desde archivo JSON
+- 📈 Análisis detallado de resultados
+- 🔄 Navegación intuitiva entre preguntas
+- 📱 Interfaz gráfica moderna con Java Swing
+
 ## Funcionalidades Implementadas
 
 ### 1. Carga de ítemes desde archivo
@@ -33,28 +42,30 @@ Sistema desarrollado en Java Swing que permite administrar la aplicación de pru
 
 ## Instrucciones de Ejecución
 
-### Requisitos
-- Java 8 o superior
-- Bibliotecas: Gson para manejo de JSON
+### Requisitos Previos
+- IntelliJ IDEA
+- JDK 23.0.2
 
-### Pasos para ejecutar
+### Ejecutar el Proyecto
 
-1. **Compilar el proyecto:**
-   ```bash
-   javac -cp "lib/*" src/Main.java src/tarea2/**/*.java
-   ```
+1. **Abrir el proyecto:**
+   - Abrir IntelliJ IDEA
+   - Seleccionar "Open" y navegar hasta la carpeta del proyecto
+   - Seleccionar la carpeta `tarea2` y hacer clic en "OK"
 
 2. **Ejecutar la aplicación:**
-   ```bash
-   java -cp "src:lib/*" Main
-   ```
+   - Localizar `src/Main.java` en el panel de Project
+   - Hacer clic derecho en `Main.java`
+   - Seleccionar "Run 'Main.main()'"
+   - O usar el botón verde de "Run" en la barra de herramientas
 
-3. **Usar la aplicación:**
-   - Al iniciar, se mostrará el menú principal
-   - Presionar "Cargar Preguntas" para cargar el archivo de preguntas
-   - Una vez cargadas, presionar "Iniciar Quiz" para comenzar
-   - Navegar entre preguntas y seleccionar respuestas
-   - Al finalizar, revisar resultados y navegación individual
+### Uso de la Aplicación
+
+1. Iniciar la aplicación
+2. Presionar "Cargar Preguntas" para cargar el archivo de preguntas
+3. Seleccionar "Iniciar Quiz" para comenzar la evaluación
+4. Navegar entre preguntas usando los botones de navegación
+5. Revisar los resultados al finalizar
 
 ## Formato del Archivo de Preguntas
 
@@ -165,3 +176,31 @@ El archivo debe estar ubicado en `src/data/preguntas.json` y seguir el siguiente
 4. **ANALIZAR**: Diferenciar, organizar y contrastar información
 5. **EVALUAR**: Evaluar, valorar y criticar lo aprendido
 6. **CREAR**: Producir y desarrollar nuevo conocimiento original 
+
+## Estructura del Proyecto
+
+```
+tarea2/
+├── src/
+│   ├── data/
+│   │   └── preguntas.json    # Archivo de preguntas
+│   ├── tarea2/
+│   │   ├── backend/         # Lógica de negocio
+│   │   │   ├── QuizManager.java
+│   │   │   ├── Pregunta.java
+│   │   │   └── ...
+│   │   └── frontend/        # Interfaz gráfica
+│   │       ├── DisplayMainMenu.java
+│   │       ├── PruebaPreguntas.java
+│   │       └── ...
+│   └── Main.java           # Punto de entrada
+└── lib/
+    └── gson-2.8.9.jar      # Dependencias
+```
+
+
+## Autores
+
+José Salazar - Victor Nuñez - Raphael Maufroid
+
+Link del Proyecto: [https://github.com/JoseISC/tarea2](https://github.com/JoseISC/tarea2) 
