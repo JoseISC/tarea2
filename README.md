@@ -201,6 +201,6 @@ tarea2/
 
 ## Autores
 
-José Salazar - Victor Nuñez - Raphael Maufroid
+José Salazar - Victor Nuñez - Raphël Maufroy
 
 Link del Proyecto: [https://github.com/JoseISC/tarea2](https://github.com/JoseISC/tarea2) 
