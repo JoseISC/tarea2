@@ -140,7 +140,8 @@ public class RevisionIndividual {
     private void mostrarRevisionSeleccionMultiple(SeleccionMultiple pregunta, String respuestaUsuario, boolean esCorrecta) {
         respuestasPanel.add(new JLabel("Opciones:"));
         respuestasPanel.add(Box.createRigidArea(new Dimension(0, 5)));
-        
+
+
         int respuestaUsuarioInt = -1;
         try {
             respuestaUsuarioInt = Integer.parseInt(respuestaUsuario);
@@ -177,6 +178,10 @@ public class RevisionIndividual {
         boolean respuestaUsuarioBool;
         boolean respuestaVacia = respuestaUsuario.isEmpty();
         respuestaUsuarioBool = "1".equals(respuestaUsuario);
+
+        // Esto da null si NO encuentra el String - *NO* RETORNA UN STRING VACIO!
+        String justifiacionUsuario = quizManager.getJustificacionUsuario().get(indiceActual);
+
 
         boolean respuestaCorrectaBool = pregunta.getRespuestaCorrecta();
         
@@ -233,7 +238,37 @@ public class RevisionIndividual {
             JLabel justificacionTexto = new JLabel("<html><body style='width: 400px'>" + 
                                                   pregunta.getJustificacion() + "</body></html>");
             respuestasPanel.add(justificacionTexto);
+
+            if (!respuestaVacia && justifiacionUsuario != null){
+                respuestasPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+                JLabel justificacionUsuarioTitulo = new JLabel("Tu justificación:");
+                justificacionUsuarioTitulo.setFont(justificacionUsuarioTitulo.getFont().deriveFont(Font.BOLD));
+                respuestasPanel.add(justificacionUsuarioTitulo);
+                //System.out.println("AJUEFHJAEGUYHAEGIUEAGHEAUISGA");
+                JLabel justificacionUsuarioTexto = new JLabel("<html><body style='width: 400px'>" +
+                        justifiacionUsuario + "</body></html>");
+                respuestasPanel.add(justificacionUsuarioTexto);
+            }
+
         }
+
+
+        if (respuestaUsuarioBool == esCorrecta){
+            if (justifiacionUsuario != null){
+                respuestasPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+                JLabel justificacionUsuarioTitulo = new JLabel("Tu justificación:");
+                justificacionUsuarioTitulo.setFont(justificacionUsuarioTitulo.getFont().deriveFont(Font.BOLD));
+                respuestasPanel.add(justificacionUsuarioTitulo);
+                //System.out.println("AJUEFHJAEGUYHAEGIUEAGHEAUISGA");
+                JLabel justificacionUsuarioTexto = new JLabel("<html><body style='width: 400px'>" +
+                        justifiacionUsuario + "</body></html>");
+                respuestasPanel.add(justificacionUsuarioTexto);
+            }
+
+        }
+
+
+
     }
     
     private void volverAlResumen() {

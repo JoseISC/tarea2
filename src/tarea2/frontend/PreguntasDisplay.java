@@ -7,6 +7,8 @@ import tarea2.backend.VerdaderoFalso;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -115,11 +117,17 @@ public class PreguntasDisplay {
 
         // Coloreal la alternativa si el usuario ya la respondio.
         if(respuestaActualRespondida){
+
+            // Verdadero
             if(Integer.parseInt(respuestaActual) == 1){
                 verdadero.getAlternativaBoton().setBackground(colorSeleccionado);
                 verdadero.getAlternativasPanel().setBackground(colorSeleccionado);
             }
+
+            // Falso
             else if (Integer.parseInt(respuestaActual) == 0){
+                String justificacionUsuario = this.quizManager.getJustificacionUsuario().get(quizManager.getIndiceActual());
+                opcionVF.getJustificacionTextField().setText(justificacionUsuario);
                 opcionVF.getJustificacionTextField().setEnabled(true);
                 opcionVF.getFalsoButton().setBackground(colorSeleccionado);
                 opcionVF.getJustificacionTextField().setBackground(colorSeleccionado);
@@ -130,6 +138,7 @@ public class PreguntasDisplay {
         //TODO: Hay que "limpiar" OpcionVF - tiene mucha basura que no se esta usando.
         opcionesPanel.add(opcionVF.getOpcionVFPanel());
 
+        // Clickeo en V
         verdadero.getAlternativaBoton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -147,6 +156,7 @@ public class PreguntasDisplay {
             }
         });
 
+        // Clickeo en F
         opcionVF.getFalsoButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -160,6 +170,22 @@ public class PreguntasDisplay {
                 System.out.println("Usuario marco indice: 0");
 
                 quizManager.responderActual(String.valueOf("0"));
+            }
+        });
+
+        opcionVF.getJustificacionTextField().getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                guardarJustificacion();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                guardarJustificacion();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                guardarJustificacion();
+            }
+
+            public void guardarJustificacion() {
+                quizManager.getJustificacionUsuario().put(quizManager.getIndiceActual(), opcionVF.getJustificacionTextField().getText());
             }
         });
     }

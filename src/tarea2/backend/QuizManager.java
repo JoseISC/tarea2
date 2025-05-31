@@ -5,11 +5,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuizManager {
     private List<Pregunta> preguntas;
     private List<String> respuestasUsuario;
+
+
+    private Map<Integer, String> justificacionUsuario = new HashMap<Integer, String>();
     private int indiceActual = 0;
 
     public QuizManager() {
@@ -119,6 +124,11 @@ public class QuizManager {
         }
         return respuestas;
     }
+
+    public Map<Integer, String> getJustificacionUsuario() {
+        return justificacionUsuario;
+    }
+
 
 
     public int getPorcentajePregunta(List<Pregunta> preguntas, List<String> respuestas){

@@ -33,6 +33,14 @@
   },
   {
     "type": "VerdaderoFalso",
+    "enunciado": "El cielo es azul.",
+    "bloomLevel": "RECORDAR",
+    "tiempoEstimado": 15,
+    "respuestaCorrecta": true,
+    "justificacion": "En la Tierra si lo es."
+  },
+  {
+    "type": "VerdaderoFalso",
     "enunciado": "La Gran Muralla China es visible desde la Luna a simple vista.",
     "bloomLevel": "ANALIZAR",
     "tiempoEstimado": 20,
