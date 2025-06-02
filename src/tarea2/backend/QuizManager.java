@@ -271,7 +271,7 @@ public class QuizManager {
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
 
-        JsonArray jsonArray = parser.parse(new FileReader("tarea2/src/data/preguntas.json")).getAsJsonArray();
+        JsonArray jsonArray = parser.parse(new FileReader("./src/data/preguntas.json")).getAsJsonArray();
         List<Pregunta> preguntas = new ArrayList<>();
 
         for (JsonElement jsonElement : jsonArray) {
